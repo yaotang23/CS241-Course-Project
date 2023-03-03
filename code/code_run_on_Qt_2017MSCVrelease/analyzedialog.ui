@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnalyzeDialog</class>
+ <widget class="QDialog" name="AnalyzeDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1169</width>
+    <height>741</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;Arial&quot;;</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QComboBox" name="comboBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+
+
+	background:rgb(255,255,255);
+	border-radius:6px;
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>TOP 10 popular visited POIs </string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Most frequently visiting 10 users of a POI</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Compare 2 users'activity levels</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>compare 2 POIs' daily active users</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="styleSheet">
+      <string notr="true">
+QPushButton
+{
+	background:rgb(176, 184, 255);
+	border-radius:6px;
+}
+QStackedWidget
+{
+border-image: url(:/image/map/image3.jpg);
+}
+QLabel{
+color:rgb(255, 255, 255);}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>261</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>TOP 10 popular visited POIs </string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>261</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>user_id</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="user_id_1">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>starting time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDateTimeEdit" name="startTime1"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>ending time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDateTimeEdit" name="endTime1">
+          <property name="dateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2020</year>
+            <month>1</month>
+            <day>1</day>
+           </datetime>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btn1">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>70</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DISPLAY</string>
+       </property>
+      </widget>
+      <widget class="QChartView" name="widget1" native="true">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>621</width>
+         <height>231</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QChartView" name="widget_chart_page1" native="true">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>400</y>
+         <width>691</width>
+         <height>231</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <widget class="QWidget" name="formLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>322</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>starting time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QDateTimeEdit" name="startTime2"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_12">
+          <property name="text">
+           <string>ending time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDateTimeEdit" name="endTime2">
+          <property name="dateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2020</year>
+            <month>1</month>
+            <day>1</day>
+           </datetime>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="location_id2">
+          <property name="text">
+           <string>location_id</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="loc_id_2">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>291</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Most frequently visiting 10 users of a POI</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btn2">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>80</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>DISPLAY</string>
+       </property>
+      </widget>
+      <widget class="QChartView" name="widget2" native="true">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>1141</width>
+         <height>201</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QChartView" name="widget_chart_page2" native="true">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>390</y>
+         <width>1151</width>
+         <height>251</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_5">
+      <widget class="QLabel" name="label_17">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>30</y>
+         <width>54</width>
+         <height>12</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_18">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>271</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Compare 2 users' visited POIs</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>40</y>
+         <width>241</width>
+         <height>108</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_5">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_19">
+          <property name="text">
+           <string>user_id_1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="userid1_3">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_20">
+          <property name="text">
+           <string>user_id_2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="userid2_3">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+          <property name="value">
+           <number>1</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_21">
+          <property name="text">
+           <string>starting time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDateTimeEdit" name="startTime3"/>
+        </item>
+        <item row="3" column="1">
+         <widget class="QDateTimeEdit" name="endTime3">
+          <property name="dateTime">
+           <datetime>
+            <hour>0</hour>
+            <minute>0</minute>
+            <second>0</second>
+            <year>2020</year>
+            <month>1</month>
+            <day>1</day>
+           </datetime>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_22">
+          <property name="text">
+           <string>ending time</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btn3">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>100</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Compare</string>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget_user_com">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>200</y>
+         <width>441</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget_user_dif">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>370</y>
+         <width>441</width>
+         <height>192</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_6">
+      <widget class="QLabel" name="label_23">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>10</y>
+         <width>271</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Compare 2 POIs' daily active users</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>212</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_6">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_24">
+          <property name="text">
+           <string>location_id_1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="loc_id1_4">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_25">
+          <property name="text">
+           <string>location_id_2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="loc_id2_4">
+          <property name="maximum">
+           <number>100000</number>
+          </property>
+          <property name="value">
+           <number>2</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_26">
+          <property name="text">
+           <string>date:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDateEdit" name="dateEdit">
+          <property name="date">
+           <date>
+            <year>2010</year>
+            <month>5</month>
+            <day>1</day>
+           </date>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btn4">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>100</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Compare</string>
+       </property>
+      </widget>
+      <widget class="QChartView" name="widget4" native="true">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>230</y>
+         <width>461</width>
+         <height>261</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QTableWidget" name="tableWidget_dau">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>240</y>
+         <width>256</width>
+         <height>81</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header location="global">qchartview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

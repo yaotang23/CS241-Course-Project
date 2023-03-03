@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PaintDialog</class>
+ <widget class="QDialog" name="PaintDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1025</width>
+    <height>684</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;Arial&quot;;
+QDialog{
+border-image: url(:/image/map/image3.jpg);}
+</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>941</width>
+     <height>611</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+	border:2px solid rgb(255,255,255);
+	border-radius:6px;
+
+	background: rgb(176, 184, 255);
+}
+QDialog{
+border-image: url(:/image/map/image3.jpg);
+}</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QWidget" name="widget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>851</width>
+       <height>471</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_next">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>580</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>120</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>next page</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>10</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>User's motion trail picture</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_2" native="true">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>40</y>
+       <width>284</width>
+       <height>48</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>user_id:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBox_user_id">
+        <property name="maximum">
+         <number>100000</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_paint_user">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>paint</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>30</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>location_id</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spinBox_location_id">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>30</y>
+       <width>42</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>100000</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_paint_location">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>40</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>120</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Paint heatmap</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="widget_loc" native="true">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>891</width>
+       <height>481</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_pre">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>580</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>120</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>pre page</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>60</y>
+       <width>120</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>120</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>find the location</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

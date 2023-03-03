@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?type=webgl&v=1.0&ak=uGsQ7A6uXWXGAN4CqBWKXshc8U1M1YRx"></script>
+    <script type="text/javascript" src="https://mapopen.bj.bcebos.com/github/BMapGLLib/TrackAnimation/src/TrackAnimation.min.js"></script>
+    <script src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.139/dist/mapvgl.min.js"></script>
+    <title>根据经纬度定位</title>
+    <style>
+        html, body, #allmap{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        #result{
+            padding: 7px 10px;
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            width: 450px;
+            background: #fff;
+            box-shadow: 0 2px 6px 0 rgba(27, 142, 236, 0.5);
+            border-radius: 7px;
+            z-index: 99;
+        }
+        #result input{
+            width:130px;
+            margin-right:10px;
+            height:25px;
+            border: 1px solid rgba(27, 142, 236, 0.5);
+            border-radius: 5px;
+        }
+        #result button{
+            border: 1px solid rgba(27, 142, 236, 0.5);
+            border-radius: 5px;
+            background: rgba(27, 142, 236, 0.5);
+            color: #fff
+        }
+    </style>
+</head>
+<body>
+    <div id='allmap'></div>
+    <script>
+        // 百度地图API功能
+        var map = new BMapGL.Map("allmap");
+        map.centerAndZoom(new BMapGL.Point(116.331398,39.897445),11);
+        map.enableScrollWheelZoom(true);
+        //var driving = new BMapGL.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+        var p1 = new BMapGL.Point(116.301934,39.977552);
+       var p2 = new BMapGL.Point(116.508328,39.919141);
+        var pl;
+        var points = [];
+        var points2=[];
+        var x=[];
+        var y=[];
+       var driving = new BMapGL.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
+       driving.search(p1, p2);
+
+        function showAlert()
+        {
+        }
+        function start () {
+            trackAni = new BMapGLLib.TrackAnimation(map, pl, {
+                overallView: true,
+                tilt: 30,
+                duration: 20000,
+                delay: 300
+            });
+            trackAni.start();
+        }
+        // 用经纬度设置地图中心点
+
+        function addLabel()
+        {
+            //alert(points.length);
+        for (var i = 0; i < points.length; i++) {
+                       //var marker = new BMapGL.Marker(new BMapGL.Point(points[i]));//标创建注点
+                      // var content =TestPoint[i][2];
+                      // map.addOverlay(marker);//添加覆盖物
+                      // marker.setLabel(new BMapGL.Label("location_id"+points2[i],{offset:new BMapGL.Size(15,-25)}));//备注
+                       //pointlygon_array[i] = new BMapGL.Point(points[i]);  //创建线段用的坐标数组
+                       //alert("123456");
+                       var layer = new mapvgl.TextLayer({
+                           color: '#fff',
+                           fontFamily: 'Microsoft Yahei',
+                           fontSize: 14,
+                           flat: false,
+                           collides: true,
+                           offset: [0, 0],
+                           padding: [2, 2],
+                           margin: [0, 0],
+                           data: [{
+                               geometry: {
+                                   type: 'Point',
+                                   coordinates: [x[i],y[i]]
+                               },
+                               properties: {
+                                       text: "location_id="+points2[i] // 展示的文字
+                               }
+                           }]
+                       });
+                       map.addOverlay(layer);
+
+                }
+        }
+
+
+        function paintUserMap1()
+        {
+            pl = new BMapGL.Polyline(points);
+            setTimeout('start()', 3000);
+        }
+
+        function paintUserMapAdd(longitude1,latitude1,location_id)
+        {
+            points.push(new BMapGL.Point(longitude1,latitude1));
+            points2.push(location_id);
+            x.push(longitude1);
+            y.push(latitude1);
+        }
+        function clearAll()
+        {points=[];
+        points2=[];
+        x=[];
+        y=[];
+        }
+    </script>
+</body>
+</html>

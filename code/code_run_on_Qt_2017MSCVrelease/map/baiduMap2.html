@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>MapVGL</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            #map_container {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        </style>
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=uGsQ7A6uXWXGAN4CqBWKXshc8U1M1YRx"></script>
+        <!--<script src="static/common.js"></script>-->
+        <script type="text/javascript" src="https://mapv.baidu.com/build/mapv.min.js"></script>
+        <script type="text/javascript" src="https://code.bdstatic.com/npm/mapvgl@1.0.0-beta.139/dist/mapvgl.min.js"></script>
+    </head>
+    <body>
+        <div id="map_container"></div>
+        <script>
+            /* global BMapGL */
+
+            /* global mapv */
+
+            /* global mapvgl */
+
+            /* global initMap */
+
+            /* global whiteStyle */
+            var map = new BMapGL.Map("map_container");
+            map.centerAndZoom(new BMapGL.Point(116.331398,39.897445),0);
+            map.enableScrollWheelZoom(true);
+
+            var data  = [];
+
+            var citys = [];
+            var longi=[];
+            var lati=[];
+            var times=[];
+            function addLabel()
+            {
+                // 构造数据
+                var i=0;
+                var randomCount = citys.length;
+                while (randomCount--) {
+                    var cityName = citys[i];
+                    //var cityCenter = mapv.utilCityCenter.getCenterByCityName(cityName);
+                    var lng = longi[i];
+                    var lat = lati[i];
+                    data.push({
+                        geometry: {
+                            type: 'Point',
+                            //coordinates: [longi[i], lati[i]],
+                            coordinates: [lng, lat],
+                        },
+                        properties: {
+                            text: 'location_id:'+ cityName + '\n'+'visited times:'+times[i]+'\n' + longi[i] + '，' + lati[i],
+                            //text:'aaaaaaaaa',
+                            // textColor: '#fff',
+                            // borderColor: ['#0f0', '#f00', '#00f'][randomCount % 3],
+                            // backgroundColor: ['#0f0', '#f00', '#00f'][randomCount % 3],
+                        },
+                    });
+                    i=i+1;
+                }
+
+                var view = new mapvgl.View({
+                    map: map,
+                });
+
+                var layer = new mapvgl.LabelLayer({
+                    textAlign: 'center',
+                    textColor: '#fc0',
+                    borderColor: '#666',
+                    backgroundColor: '#666',
+                    padding: [2, 5],
+                    borderRadius: 5,
+                    fontSize: 12,
+                    lineHeight: 16,
+                    collides: true, // 是否开启碰撞检测, 数量较多时建议打开
+                    enablePicked: true,
+                    onClick: e => {
+                        // 点击事件
+                        console.log('click', e);
+                    },
+                });
+
+                view.addLayer(layer);
+                layer.setData(data);
+
+            }
+            function find(central_id_longitude,central_id_latitude,scale)
+            {
+              map.centerAndZoom(new BMapGL.Point(central_id_longitude,central_id_latitude),scale);
+            }
+            function addPlace(location_id,longtitude,latitude,time1)
+            {
+                citys.push(location_id);
+                longi.push(longtitude);
+                lati.push(latitude);
+                times.push(time1);
+
+            }
+
+        </script>
+    </body>
+</html>

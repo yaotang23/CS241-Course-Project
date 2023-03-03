@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>map/baiduMap.html</file>
+        <file>map/baiduMap2.html</file>
+    </qresource>
+    <qresource prefix="/image">
+        <file>map/background.jpg</file>
+        <file>map/image2.jpg</file>
+        <file>map/image3.jpg</file>
+    </qresource>
+</RCC>
