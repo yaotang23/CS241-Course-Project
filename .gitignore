@@ -4,5 +4,6 @@
 *.dll
 *.exe
 *.user*
-.docx
+*.docx
+*.pdf
 you_can_run_the_FINAL_03_exe_in this_file
